@@ -40,6 +40,7 @@ function handleNewBin(event) {
         tampa
     };
 
+    addBin(newBin);
     bins.push(newBin);
     renderDashboard();
 
