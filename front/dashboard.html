@@ -71,8 +71,8 @@
             <div class="col-12">
                 <div class="status-card">
                     <h5>Adicionar nova lixeira</h5>
-                    <form id="newBinForm" class="row g-3 align-items-end">
-                        <div class="col-md-3">
+                    <form id="newBinForm" class="row g-2 align-items-end">
+                        <div class="col-md-2">
                             <label class="form-label">Nome</label>
                             <input type="text" id="binName" class="form-control" required>
                         </div>
@@ -95,8 +95,8 @@
                                 <option value="aberta">aberta</option>
                             </select>
                         </div>
-                        <div class="col-md-1 d-grid">
-                            <button class="btn btn-success">Adicionar</button>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-success w-100">Adicionar</button>
                         </div>
                     </form>
                 </div>
@@ -107,6 +107,21 @@
         <div id="map"></div>
 
     </div>
+
+    <!-- Footer -->
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="footer-text">
+                <p>&copy; 2026 Sistema de Lixeiras Inteligentes. Feito por:.</p>
+            </div>
+            <div class="footer-buttons">
+                <button class="btn btn-sm">Lucas Federizzi</button>
+                <button class="btn btn-sm">Talysson da costa</button>
+                <button class="btn btn-sm">Gabriel Almeida</button>
+                <button class="btn btn-sm">Renan Terre</button>
+            </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
