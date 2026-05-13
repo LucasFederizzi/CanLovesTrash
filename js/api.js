@@ -5,8 +5,8 @@ async function getBins() {
         {
             id: 1,
             nome: "Lixeira Central",
-            lat: -28.2628,
-            lng: -52.4064,
+            lat: -28.265374,
+            lng: -52.397234,
             ocupacao: 80,
             tampa: "fechada"
         },
@@ -14,8 +14,8 @@ async function getBins() {
         {
             id: 2,
             nome: "Lixeira Praça",
-            lat: -28.2700,
-            lng: -52.4000,
+            lat: -28.263911,
+            lng: -52.398060,
             ocupacao: 45,
             tampa: "aberta"
         }
