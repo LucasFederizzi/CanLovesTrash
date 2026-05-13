@@ -1,0 +1,23 @@
+body {
+    background: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.custom-navbar {
+    background: #198754;
+}
+
+.status-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+}
+
+#map {
+    height: 500px;
+    border-radius: 12px;
+}
