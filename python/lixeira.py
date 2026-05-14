@@ -51,7 +51,7 @@ def medir_nivel_estavel():
     return nivel, round(dist_media, 1)
 
 def mover_tampa(abrir):
-    ciclo = 7.5 if abrir else 2.5
+    ciclo = 7.5 if abrir else 1.8
     servo.ChangeDutyCycle(ciclo)
     time.sleep(0.5)
     servo.ChangeDutyCycle(0)
