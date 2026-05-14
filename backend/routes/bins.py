@@ -36,16 +36,20 @@ def create_bin():
     data = request.get_json()
 
     smart_bin = SmartBin(
-        location=data.get('location'),
-        current_level=0,
-        status='Disponível'
+        nome=data.get('nome'),
+        lat=data.get('lat'),
+        lng=data.get('lng'),
+        ocupacao=data.get('ocupacao', 0),
+        tampa=data.get('tampa', 'fechada'),
+        status=data.get('status', 'Disponível')
     )
 
     db.session.add(smart_bin)
     db.session.commit()
 
     return jsonify({
-        'message': 'Lixeira criada'
+        'message': 'Lixeira criada',
+        'id': smart_bin.id
     })
 
 
@@ -64,8 +68,11 @@ def get_bins():
 
         result.append({
             'id': b.id,
-            'location': b.location,
-            'current_level': b.current_level,
+            'nome': b.nome,
+            'lat': b.lat,
+            'lng': b.lng,
+            'ocupacao': b.ocupacao,
+            'tampa': b.tampa,
             'status': b.status
         })
 
@@ -89,9 +96,29 @@ def update_bin(id):
             'error': 'Lixeira não encontrada'
         }), 404
 
-    smart_bin.location = data.get(
-        'location',
-        smart_bin.location
+    smart_bin.nome = data.get(
+        'nome',
+        smart_bin.nome
+    )
+
+    smart_bin.lat = data.get(
+        'lat',
+        smart_bin.lat
+    )
+
+    smart_bin.lng = data.get(
+        'lng',
+        smart_bin.lng
+    )
+
+    smart_bin.ocupacao = data.get(
+        'ocupacao',
+        smart_bin.ocupacao
+    )
+
+    smart_bin.tampa = data.get(
+        'tampa',
+        smart_bin.tampa
     )
 
     smart_bin.status = data.get(
@@ -153,7 +180,7 @@ def update_level(id):
         distance
     )
 
-    smart_bin.current_level = level
+    smart_bin.ocupacao = level
 
     alert = analyze_fill_level(level)
 

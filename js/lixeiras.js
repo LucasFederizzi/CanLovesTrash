@@ -32,8 +32,8 @@ function renderLixeiras(bins) {
     });
 }
 
-function handleDeleteBin(id) {
-    deleteBin(id);
+async function handleDeleteBin(id) {
+    await deleteBin(id);
     loadLixeiras();
 }
 

@@ -37,12 +37,24 @@ class SmartBin(db.Model):
         primary_key=True
     )
 
-    location = db.Column(
+    nome = db.Column(
         db.String(100)
     )
 
-    current_level = db.Column(
+    lat = db.Column(
+        db.Float
+    )
+
+    lng = db.Column(
+        db.Float
+    )
+
+    ocupacao = db.Column(
         db.Integer
+    )
+
+    tampa = db.Column(
+        db.String(50)
     )
 
     status = db.Column(

@@ -1,54 +1,35 @@
-const STORAGE_KEY = "lixeiras_inteligentes";
-
-const defaultBins = [
-    {
-        id: 1,
-        nome: "Lixeira Central",
-        lat: -28.265374,
-        lng: -52.397234,
-        ocupacao: 80,
-        tampa: "fechada"
-    },
-    {
-        id: 2,
-        nome: "Lixeira Praça",
-        lat: -28.263911,
-        lng: -52.398060,
-        ocupacao: 45,
-        tampa: "aberta"
-    }
-];
-
-function loadBinsFromStorage() {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultBins));
-        return defaultBins.slice();
-    }
-
-    try {
-        return JSON.parse(stored);
-    } catch (error) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultBins));
-        return defaultBins.slice();
-    }
-}
-
-function saveBinsToStorage(bins) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(bins));
-}
+const API_BASE = "http://localhost:5000";
 
 async function getBins() {
-    return loadBinsFromStorage();
+    const response = await fetch(`${API_BASE}/bins`);
+    return await response.json();
 }
 
-function addBin(bin) {
-    const bins = loadBinsFromStorage();
-    bins.push(bin);
-    saveBinsToStorage(bins);
+async function addBin(bin) {
+    const response = await fetch(`${API_BASE}/bins`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bin)
+    });
+    return await response.json();
 }
 
-function deleteBin(id) {
-    const bins = loadBinsFromStorage().filter(bin => bin.id !== id);
-    saveBinsToStorage(bins);
+async function deleteBin(id) {
+    const response = await fetch(`${API_BASE}/bins/${id}`, {
+        method: 'DELETE'
+    });
+    return await response.json();
+}
+
+async function updateBin(id, data) {
+    const response = await fetch(`${API_BASE}/bins/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
 }

@@ -17,7 +17,7 @@ function renderDashboard() {
     addBinsToMap(bins);
 }
 
-function handleNewBin(event) {
+async function handleNewBin(event) {
     event.preventDefault();
 
     const name = document.getElementById("binName").value.trim();
@@ -32,7 +32,6 @@ function handleNewBin(event) {
     }
 
     const newBin = {
-        id: Date.now(),
         nome: name,
         lat,
         lng,
@@ -40,7 +39,8 @@ function handleNewBin(event) {
         tampa
     };
 
-    addBin(newBin);
+    const result = await addBin(newBin);
+    newBin.id = result.id;
     bins.push(newBin);
     renderDashboard();
 
